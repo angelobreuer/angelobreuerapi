@@ -1,11 +1,14 @@
 using AngeloBreuerApi;
+using Rokku.Egress.Proxy;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<DataService>();
 builder.Services.AddSingleton<GitHubClient>();
 builder.Services.Configure<AppConfiguration>(builder.Configuration.GetSection("App"));
+
 builder.Services.AddHttpClient();
+builder.Services.AddEgressProxy();
 
 builder.Services.AddCors();
 
